@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FXTXT79JXP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-FXTXT79JXP');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ro'yxatdan o'tish - Sellers Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="register-styles.css?v=2">
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-card">
+            <div class="register-header">
+                <h1>Ro'yxatdan o'tish</h1>
+                <p class="subtitle">Kursga kirish uchun botdan OTP kod oling</p>
+                <p class="hint">Allaqachon ro'yxatdan o'tganmisiz? Telegram botga o'ting va yangi OTP kod oling.</p>
+            </div>
+
+            <!-- Step 1: Telegram Bot -->
+            <div class="step-section">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <div>
+                        <h3>Telegram botga o'ting</h3>
+                        <p class="step-description">Botni ochib, Start tugmasini bosing va telefon raqamingizni ulashing</p>
+                    </div>
+                </div>
+                
+                <a href="https://t.me/sellerprouz_bot" target="_blank" class="telegram-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM16.64 8.8C16.49 10.38 15.84 14.22 15.51 15.99C15.37 16.74 15.09 16.99 14.83 17.02C14.25 17.07 13.81 16.64 13.25 16.27C12.37 15.69 11.87 15.33 11.02 14.77C10.03 14.12 10.67 13.76 11.24 13.18C11.39 13.03 13.95 10.7 14 10.49C14.0069 10.4582 14.006 10.4252 13.9973 10.3938C13.9886 10.3624 13.9724 10.3337 13.95 10.31C13.89 10.26 13.81 10.28 13.74 10.29C13.65 10.31 12.25 11.24 9.52 13.08C9.12 13.35 8.76 13.49 8.44 13.48C8.08 13.47 7.4 13.28 6.89 13.11C6.26 12.91 5.77 12.8 5.81 12.45C5.83 12.27 6.08 12.09 6.55 11.9C9.47 10.63 11.41 9.79 12.38 9.39C15.16 8.23 15.73 8.03 16.11 8.03C16.19 8.03 16.38 8.05 16.5 8.15C16.6 8.23 16.63 8.34 16.64 8.42C16.63 8.48 16.65 8.66 16.64 8.8Z" fill="currentColor"/>
+                    </svg>
+                    Telegram botni ochish
+                </a>
+                
+                <div class="info-box">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V11H13V17ZM13 9H11V7H13V9Z" fill="currentColor"/>
+                    </svg>
+                    <span>OTP kod 1 daqiqa amal qiladi</span>
+                </div>
+            </div>
+
+            <!-- Step 2: Enter OTP -->
+            <div class="step-section">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <div>
+                        <h3>OTP kodni kiriting</h3>
+                        <p class="step-description">Botdan olgan 6 raqamli kodni kiriting</p>
+                    </div>
+                </div>
+                
+                <form id="otpForm" class="otp-form">
+                    <div class="otp-inputs">
+                            <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-input" data-index="0" autocomplete="off">
+                            <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-input" data-index="1" autocomplete="off">
+                            <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-input" data-index="2" autocomplete="off">
+                            <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-input" data-index="3" autocomplete="off">
+                            <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-input" data-index="4" autocomplete="off">
+                            <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-input" data-index="5" autocomplete="off">
+                        </div>
+                        
+                        <div class="form-message" id="formMessage"></div>
+                        
+                        <button type="submit" class="submit-button" id="submitButton">
+                            Tasdiqlash
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="auth-check.js"></script>
+    <script src="register-script.js"></script>
+</body>
+</html>
