@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../database');
+const Lead = require('../models/Lead');
 
 /**
  * AmoCRM Webhook Endpoint
@@ -39,7 +39,6 @@ router.post('/webhook', async (req, res) => {
 async function processAmoCRMLead(leadId, webhookData) {
     try {
         // Extract lead data from webhook
-        // Note: You'll need to fetch full lead details via API for complete data
         const leadData = {
             name: webhookData[`leads[add][${leadId}][name]`] || 'Unknown',
             phone: extractPhone(webhookData, leadId),
@@ -53,31 +52,17 @@ async function processAmoCRMLead(leadId, webhookData) {
         
         // Check if lead already exists (by phone)
         if (leadData.phone) {
-            const existingLead = await new Promise((resolve, reject) => {
-                db.get(
-                    'SELECT id FROM leads WHERE phone = ?',
-                    [leadData.phone],
-                    (err, row) => {
-                        if (err) reject(err);
-                        else resolve(row);
-                    }
-                );
-            });
+            const existingLead = await Lead.findOne({ phone: leadData.phone });
             
             if (existingLead) {
-                console.log('Lead already exists:', existingLead.id);
+                console.log('Lead already exists:', existingLead._id);
                 return;
             }
         }
         
-        // Insert new lead into database
-        await new Promise((resolve, reject) => {
-            db.run(
-                `INSERT INTO leads (name, phone, email, source, status, created_at, notes)
-                 VALUES (?, ?, ?, ?, ?, datetime('now'), ?)`,
-                [leadData.name, leadData.phone, leadData.email, leadData.source, leadData.status, leadData.notes],
-                function(err) {
-                    if (err) reject(err);
+        // Create new lead in database
+        const newLead = new Lead(leadData);
+        await newLead.save;
                     else resolve(this.lastID);
                 }
             );
