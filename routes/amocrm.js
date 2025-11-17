@@ -62,11 +62,7 @@ async function processAmoCRMLead(leadId, webhookData) {
         
         // Create new lead in database
         const newLead = new Lead(leadData);
-        await newLead.save;
-                    else resolve(this.lastID);
-                }
-            );
-        });
+        await newLead.save();
         
         console.log('Lead successfully saved to database');
         
